@@ -4,6 +4,7 @@ public class MainClass {
 	public static void main(String[] args) {
 		System.err.println("öykü");
 		System.err.println("öykü arslan");
+		System.err.println("öykü3");
 	}
 	
 

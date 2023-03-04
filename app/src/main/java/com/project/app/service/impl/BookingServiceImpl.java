@@ -94,8 +94,8 @@ public class BookingServiceImpl implements BookingService{
     }
     
     @Override
-    public List<Booking> FindBookingByName(String name) {
-        return bookingRepository.FindBookingByName(name);
+    public List<Booking> FindBookingByUsername(String username) {
+        return bookingRepository.FindBookingByUsername(username);
     }
     
     @Override

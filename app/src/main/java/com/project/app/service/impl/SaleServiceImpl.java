@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.app.model.Booking;
 import com.project.app.model.Sale;
-import com.project.app.model.DTO.SaleStatusRequestDTO;
 import com.project.app.repository.SaleRepository;
 import com.project.app.service.SaleService;
 

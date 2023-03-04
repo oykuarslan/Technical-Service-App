@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.app.model.Booking;
-import com.project.app.model.DTO.BookingStatusRequestDTO;
+import com.project.app.DTO.BookingStatusRequestDTO;
 import com.project.app.service.BookingService;
 import com.project.app.service.ServiceManager;
-import com.project.app.service.impl.ServiceManagerImpl;
 
 import lombok.AllArgsConstructor;
 
@@ -73,8 +72,8 @@ public class BookingController
 	}
 	
 	@GetMapping("/findName")
-	public ResponseEntity<List<Booking>> FindBookingByName(String name){
-		return ResponseEntity.ok(bookingService.FindBookingByName(name));
+	public ResponseEntity<List<Booking>> FindBookingByName(String username){
+		return ResponseEntity.ok(bookingService.FindBookingByUsername(username));
 	}
 
 	@PutMapping("/bookingStatus/{id}")

@@ -17,7 +17,7 @@ public interface BookingService
 	Booking updateBooking(Booking booking, long id);
 	List<Booking> SortBookingByDateAsc();
 	List<Booking> SortBookingByDateDesc();
-	List<Booking> FindBookingByName(String name);
+	List<Booking> FindBookingByUsername(String username);
 	void updateIsDone(Long id, boolean isDone);
 	Booking saveBooking(Booking booking);
 	//Booking createBooking(Booking booking);

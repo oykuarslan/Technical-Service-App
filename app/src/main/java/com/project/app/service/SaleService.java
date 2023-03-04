@@ -4,9 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.project.app.model.Booking;
 import com.project.app.model.Sale;
-import com.project.app.model.DTO.SaleStatusRequestDTO;
 
 @Service
 public interface SaleService {

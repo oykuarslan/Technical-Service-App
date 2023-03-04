@@ -16,8 +16,8 @@ public interface BookingRepository extends JpaRepository<Booking,Long>
 	List<Booking> OrderByBookingDateAsc();
 	List<Booking> OrderByBookingDateDesc();
 	
-	@Query(name = "FindBookingByName", value = "SELECT p FROM Booking p WHERE p.systemUser.name LIKE CONCAT ('%',:name,'%')")
-	public List<Booking> FindBookingByName(String name);
+	@Query(name = "FindBookingByName", value = "SELECT p FROM Booking p WHERE p.systemUser.username LIKE CONCAT ('%',:username,'%')")
+	public List<Booking> FindBookingByUsername(String username);
 	List<Booking> searchByBookingDate(Date bookingDate);
 	
 	

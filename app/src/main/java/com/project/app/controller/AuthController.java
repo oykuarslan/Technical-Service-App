@@ -19,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -38,19 +39,22 @@ public class AuthController {
         this.jwtGenerator = jwtGenerator;
     }
     @PostMapping("login")
-    public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDto loginDto){
+    public AuthResponseDTO login(@RequestBody LoginDto loginDto) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginDto.getUsername(),
                         loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtGenerator.generateToken(authentication);
-
-        return new ResponseEntity<>(new AuthResponseDTO(token), HttpStatus.OK);
-
+        Optional<SystemUser> user = userRepository.findByUsername(loginDto.getUsername());
+        AuthResponseDTO authResponseDTO = new AuthResponseDTO(token);
+        authResponseDTO.setMessage("Bearer" + token);
+        authResponseDTO.setUserID(user.get().getId());
+        return authResponseDTO;
     }
 
     @PostMapping("register")
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto){
+
         if(userRepository.existsByUsername(registerDto.getUsername())){
             return new ResponseEntity<>("Username is taken", HttpStatus.BAD_REQUEST);
         }
